@@ -1,0 +1,18 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model CreditCard {
+  id            String   @id @default(uuid())
+  number        String   @unique
+  name          String
+  expiration    String
+  securityCode  String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
